@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/repeatFragment">
+    <fragment
+        android:id="@+id/repeatFragment"
+        android:name="com.magere.learnenglish.ui.screens.repeat_screen.RepeatFragment"
+        android:label="repeat_fragment"
+        tools:layout="@layout/repeat_fragment" />
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.magere.learnenglish.ui.screens.list_screen.ListFragment"
+        android:label="list_fragment"
+        tools:layout="@layout/list_fragment" >
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_listFragment_to_addWordFragment"
+            app:destination="@id/addWordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addWordFragment"
+        android:name="com.magere.learnenglish.ui.screens.add_word_screen.AddWordFragment"
+        android:label="fragment_add_word"
+        tools:layout="@layout/fragment_add_word" >
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_addWordFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+</navigation>
