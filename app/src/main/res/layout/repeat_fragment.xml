@@ -99,33 +99,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn_repeatWord"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:elevation="10dp"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:text="@string/next"
-                app:cardBackgroundColor="#D8CECE"
-                app:cardCornerRadius="8dp">
-
-                <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/repeat"
-                    android:src="@drawable/ic_refresh" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
                 android:id="@+id/btn_rememberWord"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
+                android:layout_marginStart="120dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:clickable="true"

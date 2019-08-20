@@ -47,7 +47,6 @@ class RepeatFragment : Fragment(), View.OnClickListener {
 
         layout_speakWordF.setOnClickListener(this)
         layout_speakWordB.setOnClickListener(this)
-        btn_repeatWord.setOnClickListener(this)
         btn_notRememberWord.setOnClickListener(this)
         btn_rememberWord.setOnClickListener(this)
     }
@@ -117,19 +116,6 @@ class RepeatFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun repeatWord() {
-        easyFlipView.flipTheCard()
-        viewModel.updateWordRepeatDate(
-                todayWords[counter].date!!,
-                todayWords[counter].word,
-                todayWords[counter].group!!
-        )
-        if (counter < todayWords.size) {
-            counter++
-            updateCard()
-        }
-    }
-
     private fun updateCard() {
         if (todayWords.size != 0 && counter < todayWords.size) {
 //            speak()
@@ -156,7 +142,6 @@ class RepeatFragment : Fragment(), View.OnClickListener {
             R.id.layout_speakWordB-> speak()
             R.id.btn_rememberWord -> acceptWord()
             R.id.btn_notRememberWord -> declineWord()
-            R.id.btn_repeatWord -> repeatWord()
         }
     }
 
