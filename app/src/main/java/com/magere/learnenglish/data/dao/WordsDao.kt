@@ -1,10 +1,7 @@
 package com.magere.learnenglish.data.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.magere.learnenglish.data.entities.WordsEntity
 import com.magere.learnenglish.extensions.today
 
@@ -34,6 +31,9 @@ interface WordsDao {
     fun getAllStudiedWords(): LiveData<List<WordsEntity>>
 
     // DAILY REPEATING
+    @Query("SELECT MIN(date) FROM words")
+    fun getNearestDate(): LiveData<Long>
+
     @Query("SELECT COUNT(*) FROM words WHERE `date` = :date")
     fun getCountTodayRepeatWords(date: Long): LiveData<Int>
 
@@ -57,4 +57,7 @@ interface WordsDao {
 
     @Update
     fun updateWord(word: WordsEntity)
+
+    @Delete
+    fun deleteWord(word: WordsEntity)
 }

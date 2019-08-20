@@ -19,6 +19,8 @@ class RepeatViewModel(application: Application) : AndroidViewModel(application) 
     fun getCountTodayRepeatWords(date: Long): LiveData<Int>
             = repository.getCountTodayRepeatWords(date)
 
+    fun getNearestDate(): LiveData<Long> = repository.getNearestDate()
+
     fun updateWordRepeatDate(toDate: Long, group: Int) =
             repository.updateWordRepeatDate(toDate = toDate, group = group)
 

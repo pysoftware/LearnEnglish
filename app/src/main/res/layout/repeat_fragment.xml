@@ -12,9 +12,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/tv"
             android:textAlignment="center"
             android:textSize="34sp"
-            android:text="Отдых"
+            android:text="Сегодня у Вас выходной!"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_below="@id/tv"
+            android:id="@+id/tv_nearestDate"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:text="Ближайшее повторение: 24 августа"
             android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

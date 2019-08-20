@@ -28,7 +28,7 @@
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/word"
+                android:text="@string/eng_word"
                 android:textAlignment="center"
                 android:textSize="30sp" />
 
@@ -36,7 +36,7 @@
                 android:id="@+id/tv_wordTranslate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/word"
+                android:text="@string/rus_word"
                 android:textAlignment="center"
                 android:textSize="15sp" />
 

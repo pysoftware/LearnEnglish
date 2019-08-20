@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/resetWordProgress"
+        android:title="Обновить прогресс" />
+
+    <item
+        android:id="@+id/changeWord"
+        android:title="Изменить"  />
+
+    <item
+        android:id="@+id/deleteWord"
+        android:title="Удалить"  />
+
+</menu>

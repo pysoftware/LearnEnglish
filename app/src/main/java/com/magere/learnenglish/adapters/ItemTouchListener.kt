@@ -1,7 +1,9 @@
 package com.magere.learnenglish.adapters
 
-interface ItemTouchListener {
-    fun onItemClick(position: Int)
+import android.view.View
+import com.magere.learnenglish.data.entities.WordsEntity
 
-    fun onRightMenuClick(id: Int?)
+interface ItemTouchListener {
+    fun onLongItemClick(view: View)
+    fun onItemClick(wordsEntity: WordsEntity)
 }

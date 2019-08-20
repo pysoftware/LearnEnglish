@@ -1,6 +1,8 @@
 package com.magere.learnenglish.ui.screens.repeat_screen
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -12,12 +14,15 @@ import androidx.lifecycle.ViewModelProviders
 import com.magere.learnenglish.R
 import com.magere.learnenglish.data.entities.WordsEntity
 import com.magere.learnenglish.extensions.flipTheCard
+import com.magere.learnenglish.extensions.format
 import com.magere.learnenglish.extensions.today
 import kotlinx.android.synthetic.main.flash_card_layout_back.*
 import kotlinx.android.synthetic.main.flash_card_layout_front.*
 import kotlinx.android.synthetic.main.repeat_fragment.*
+import java.util.*
 
-class RepeatFragment : Fragment() {
+class RepeatFragment : Fragment(), View.OnClickListener {
+    private lateinit var textToSpeech: TextToSpeech
 
     private var counter = 0
 
@@ -32,11 +37,43 @@ class RepeatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupViewModel()
+        textToSpeech = TextToSpeech(view.context, TextToSpeech.OnInitListener {
+            val result = textToSpeech.setLanguage(Locale.ENGLISH)
+            if(result == TextToSpeech.LANG_MISSING_DATA ||
+                    result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.d("Language", "Language is not supported")
+            } else {
 
+            }
+        })
+
+        im_speakWord.setOnClickListener(this)
+        btn_repeatWord.setOnClickListener(this)
+        btn_notRememberWord.setOnClickListener(this)
+        btn_rememberWord.setOnClickListener(this)
+    }
+
+    private fun speak() {
+        val word = tv_wordF.text.toString()
+        textToSpeech.speak(word, TextToSpeech.QUEUE_FLUSH, null, null)
+    }
+
+    private fun setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(RepeatViewModel::class.java)
+        viewModel.getNearestDate().observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                tv_nearestDate.visibility = VISIBLE
+                tv_nearestDate.text = "Ближайшее повторение: ${format(it)}"
+            }
+            else tv_nearestDate.visibility = GONE
+        })
 
         viewModel.getCountTodayRepeatWords(today()).observe(viewLifecycleOwner, Observer {
-
+            if (it == 0) {
+                rl_repeat.visibility = GONE
+                rl_chill.visibility = VISIBLE
+            }
             tv_countTodayRepeatWords.text = "Осталось повторить: $it"
             progressBar.max = it
         })
@@ -45,18 +82,6 @@ class RepeatFragment : Fragment() {
             todayWords.addAll(it)
             updateCard()
         })
-
-        btn_repeatWord.setOnClickListener {
-            repeatWord()
-        }
-
-        btn_notRememberWord.setOnClickListener {
-            declineWord()
-        }
-
-        btn_rememberWord.setOnClickListener {
-            acceptWord()
-        }
     }
 
     private fun acceptWord() {
@@ -83,27 +108,31 @@ class RepeatFragment : Fragment() {
     private fun declineWord() {
         easyFlipView.flipTheCard()
         viewModel.updateWordRepeatDate(
-                today(0),
+                today(),
                 todayWords[counter].word,
                 1
         )
-        counter++
-        updateCard()
+        if (counter < todayWords.size) {
+            counter++
+            updateCard()
+        }
     }
 
     private fun repeatWord() {
+        easyFlipView.flipTheCard()
         viewModel.updateWordRepeatDate(
                 todayWords[counter].date!!,
                 todayWords[counter].word,
                 todayWords[counter].group!!
         )
-        updateCard()
-        easyFlipView.flipTheCard()
-        todayWords.add(todayWords[counter])
+        if (counter < todayWords.size) {
+            counter++
+            updateCard()
+        }
     }
 
     private fun updateCard() {
-        if (todayWords.size != 0) {
+        if (todayWords.size != 0 && counter < todayWords.size) {
             rl_repeat.visibility = VISIBLE
             rl_chill.visibility = GONE
 
@@ -118,6 +147,15 @@ class RepeatFragment : Fragment() {
         } else {
             rl_repeat.visibility = GONE
             rl_chill.visibility = VISIBLE
+        }
+    }
+
+    override fun onClick(view: View?) {
+        when(view!!.id) {
+            R.id.im_speakWord -> speak()
+            R.id.btn_rememberWord -> acceptWord()
+            R.id.btn_notRememberWord -> declineWord()
+            R.id.btn_repeatWord -> repeatWord()
         }
     }
 }

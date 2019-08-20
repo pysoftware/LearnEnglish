@@ -13,7 +13,7 @@ import androidx.navigation.Navigation
 import com.magere.learnenglish.R
 import com.magere.learnenglish.data.entities.WordsEntity
 import com.magere.learnenglish.ui.screens.list_screen.ListViewModel
-import kotlinx.android.synthetic.main.addword_dialog.*
+import kotlinx.android.synthetic.main.fragment_add_word.*
 
 class AddWordFragment : Fragment() {
 

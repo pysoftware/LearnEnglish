@@ -21,6 +21,22 @@
             app:popExitAnim="@anim/slide_out_right"
             android:id="@+id/action_listFragment_to_addWordFragment"
             app:destination="@id/addWordFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_listFragment_to_editWord"
+            app:destination="@id/editWord" />
+        <argument
+            android:name="word"
+            app:argType="string" />
+        <argument
+            android:name="translate"
+            app:argType="string" />
+        <argument
+            android:name="date"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/addWordFragment"
@@ -35,4 +51,9 @@
             android:id="@+id/action_addWordFragment_to_listFragment"
             app:destination="@id/listFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/editWord"
+        android:name="com.magere.learnenglish.ui.screens.edit_word_screen.EditWord"
+        android:label="edit_word_fragment"
+        tools:layout="@layout/edit_word_fragment" />
 </navigation>

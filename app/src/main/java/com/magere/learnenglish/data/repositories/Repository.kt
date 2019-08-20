@@ -18,6 +18,10 @@ class Repository(application: Application) {
     private var getCountStudiedWords: LiveData<Int> = wordsDao.getCountStudiedWords()
     private var getCountAllWords: LiveData<Int> = wordsDao.getCountAllWords()
 
+    fun deleteWord(word: WordsEntity) =GlobalScope.launch(Dispatchers.IO) {
+        wordsDao.deleteWord(word)
+    }
+
     fun updateWord(word: WordsEntity) {
         GlobalScope.launch(Dispatchers.IO) {
             wordsDao.updateWord(word)
@@ -40,6 +44,9 @@ class Repository(application: Application) {
     fun getCountStudiedWords(): LiveData<Int> = getCountStudiedWords
 
     // Repeat fragment
+
+    fun getNearestDate(): LiveData<Long> = wordsDao.getNearestDate()
+
     fun getAllTodayRepeatWords(date: Long): LiveData<List<WordsEntity>>
             = wordsDao.getAllTodayRepeatWords(date)
 

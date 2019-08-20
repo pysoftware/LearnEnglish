@@ -19,13 +19,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/im_speakWord"
+                android:src="@drawable/ic_edit"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+            
             <TextView
+                android:layout_toEndOf="@id/im_speakWord"
                 android:id="@+id/tv_wordF"
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="@string/word"
+                android:text="@string/eng_word"
                 android:textAlignment="center"
                 android:textSize="30sp" />
 
