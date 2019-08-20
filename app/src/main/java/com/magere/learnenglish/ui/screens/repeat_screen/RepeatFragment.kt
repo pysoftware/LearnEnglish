@@ -41,20 +41,19 @@ class RepeatFragment : Fragment(), View.OnClickListener {
         textToSpeech = TextToSpeech(view.context, TextToSpeech.OnInitListener {
             val result = textToSpeech.setLanguage(Locale.ENGLISH)
             if(result == TextToSpeech.LANG_MISSING_DATA ||
-                    result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    result == TextToSpeech.LANG_NOT_SUPPORTED)
                 Log.d("Language", "Language is not supported")
-            } else {
-
-            }
         })
 
-        im_speakWord.setOnClickListener(this)
+        layout_speakWordF.setOnClickListener(this)
+        layout_speakWordB.setOnClickListener(this)
         btn_repeatWord.setOnClickListener(this)
         btn_notRememberWord.setOnClickListener(this)
         btn_rememberWord.setOnClickListener(this)
     }
 
     private fun speak() {
+//        textToSpeech.shutdown()
         val word = tv_wordF.text.toString()
         textToSpeech.speak(word, TextToSpeech.QUEUE_FLUSH, null, null)
     }
@@ -133,6 +132,7 @@ class RepeatFragment : Fragment(), View.OnClickListener {
 
     private fun updateCard() {
         if (todayWords.size != 0 && counter < todayWords.size) {
+//            speak()
             rl_repeat.visibility = VISIBLE
             rl_chill.visibility = GONE
 
@@ -152,10 +152,17 @@ class RepeatFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when(view!!.id) {
-            R.id.im_speakWord -> speak()
+            R.id.layout_speakWordF-> speak()
+            R.id.layout_speakWordB-> speak()
             R.id.btn_rememberWord -> acceptWord()
             R.id.btn_notRememberWord -> declineWord()
             R.id.btn_repeatWord -> repeatWord()
         }
+    }
+
+    override fun onDestroy() {
+        textToSpeech.shutdown()
+        textToSpeech.stop()
+        super.onDestroy()
     }
 }

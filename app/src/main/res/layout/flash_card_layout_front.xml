@@ -16,21 +16,26 @@
         app:cardElevation="4dp">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:id="@+id/layout_speakWordB"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <ImageView
+                android:layout_margin="5dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/im_speakWord"
                 android:src="@drawable/ic_edit"
-                android:layout_width="25dp"
-                android:layout_height="25dp" />
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="sound word" />
             
             <TextView
                 android:layout_toEndOf="@id/im_speakWord"
                 android:id="@+id/tv_wordF"
                 style="@style/TextAppearance.AppCompat.Title"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/eng_word"
