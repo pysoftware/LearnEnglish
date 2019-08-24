@@ -35,8 +35,8 @@
                     android:layout_centerVertical="true"
                     android:id="@+id/im_speakWord"
                     android:src="@drawable/ic_edit"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:contentDescription="sound word" />
 
                 <TextView
@@ -61,45 +61,11 @@
                 android:textAlignment="center"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/tv_wordExample"
-                style="@style/TextAppearance.AppCompat.Title"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_examplesB"
+                tools:listitem="@layout/example_item"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/bananas"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv_translateWordExample"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Сегодня я купил три банана блин"
-                android:textAlignment="center"
-                android:textSize="12sp"
-                tools:ignore="SmallSp" />
-
-            <TextView
-                android:id="@+id/tv_wordExample1"
-                style="@style/TextAppearance.AppCompat.Title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/bananas"
-                android:textAlignment="center"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_translateWordExample1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Сегодня я купил три банана блин"
-                android:textAlignment="center"
-                android:textSize="10sp"
-                tools:ignore="SmallSp" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

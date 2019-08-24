@@ -11,14 +11,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.magere.learnenglish.R
+import com.magere.learnenglish.adapters.ExamplesAdapter
+import com.magere.learnenglish.adapters.WordsAdapter
 import com.magere.learnenglish.data.entities.WordsEntity
 import com.magere.learnenglish.extensions.flipTheCard
 import com.magere.learnenglish.extensions.format
 import com.magere.learnenglish.extensions.today
 import kotlinx.android.synthetic.main.flash_card_layout_back.*
+import kotlinx.android.synthetic.main.flash_card_layout_back.tv_wordTranslate
 import kotlinx.android.synthetic.main.flash_card_layout_front.*
+import kotlinx.android.synthetic.main.list_fragment.*
 import kotlinx.android.synthetic.main.repeat_fragment.*
+import kotlinx.android.synthetic.main.word_item.*
 import java.util.*
 
 class RepeatFragment : Fragment(), View.OnClickListener {
@@ -26,9 +33,12 @@ class RepeatFragment : Fragment(), View.OnClickListener {
 
     private var counter = 0
 
+    var kek = ""
+
     private var todayWords = mutableListOf<WordsEntity>()
 
     private lateinit var viewModel: RepeatViewModel
+    private lateinit var mAdapter: ExamplesAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -37,6 +47,7 @@ class RepeatFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupExamplesAdapter()
         setupViewModel()
         textToSpeech = TextToSpeech(view.context, TextToSpeech.OnInitListener {
             val result = textToSpeech.setLanguage(Locale.ENGLISH)
@@ -59,6 +70,7 @@ class RepeatFragment : Fragment(), View.OnClickListener {
 
     private fun setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(RepeatViewModel::class.java)
+
         viewModel.getNearestDate().observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 tv_nearestDate.visibility = VISIBLE
@@ -117,8 +129,11 @@ class RepeatFragment : Fragment(), View.OnClickListener {
     }
 
     private fun updateCard() {
+        viewModel.getExamplesByWord(todayWords[counter].word).observe(viewLifecycleOwner, Observer {
+            mAdapter.setData(it)
+        })
         if (todayWords.size != 0 && counter < todayWords.size) {
-//            speak()
+            speak()
             rl_repeat.visibility = VISIBLE
             rl_chill.visibility = GONE
 
@@ -126,14 +141,17 @@ class RepeatFragment : Fragment(), View.OnClickListener {
             tv_wordB.text = todayWords[counter].word
 
             tv_wordTranslate.text = todayWords[counter].translate
-            tv_wordExample.text = todayWords[counter].example1
-            tv_translateWordExample.text = todayWords[counter].translateExample1
-            tv_wordExample1.text = todayWords[counter].example2
-            tv_translateWordExample1.text = todayWords[counter].translateExample2
         } else {
             rl_repeat.visibility = GONE
             rl_chill.visibility = VISIBLE
         }
+    }
+
+    private fun setupExamplesAdapter() {
+        mAdapter = ExamplesAdapter(null, activity!!.application)
+        val layoutManager = LinearLayoutManager(view?.context, RecyclerView.VERTICAL, false)
+        rv_examplesB.layoutManager = layoutManager
+        rv_examplesB.adapter = mAdapter
     }
 
     override fun onClick(view: View?) {

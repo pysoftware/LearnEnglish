@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel;
+import com.magere.learnenglish.data.entities.ExampleEntity
 import com.magere.learnenglish.data.entities.WordsEntity
 import com.magere.learnenglish.data.repositories.Repository
 import kotlinx.coroutines.Dispatchers
@@ -29,4 +30,9 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
 
     fun updateWordRepeatDate(toDate: Long, word: String, group: Int) =
             repository.updateWordRepeatDate(toDate = toDate, word = word, group = group)
+
+    fun insertExamples(examples: List<ExampleEntity>) = repository.insertExamples(examples)
+
+
+    fun insertExample(example: ExampleEntity) = repository.insertExample(example)
 }

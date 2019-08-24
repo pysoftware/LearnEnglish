@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/editWord"
-        android:name="com.magere.learnenglish.ui.screens.edit_word_screen.EditWord"
+        android:name="com.magere.learnenglish.ui.screens.edit_word_screen.EditWordFragment"
         android:label="edit_word_fragment"
         tools:layout="@layout/edit_word_fragment" />
 </navigation>

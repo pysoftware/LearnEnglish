@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel;
+import com.magere.learnenglish.data.entities.ExampleEntity
 import com.magere.learnenglish.data.entities.WordsEntity
 import com.magere.learnenglish.data.repositories.Repository
 import kotlinx.coroutines.Dispatchers
@@ -12,6 +13,9 @@ import kotlinx.coroutines.launch
 
 class RepeatViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = Repository(application)
+
+    fun getExamplesByWord(word: String): LiveData<List<ExampleEntity>> =
+            repository.getExamplesByWord(word)
 
     fun getAllTodayRepeatWords(date: Long): LiveData<List<WordsEntity>>
             = repository.getAllTodayRepeatWords(date)
