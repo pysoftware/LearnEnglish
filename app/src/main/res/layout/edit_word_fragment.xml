@@ -6,31 +6,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.magere.learnenglish.ui.screens.edit_word_screen.EditWordFragment">
+    tools:context="com.carebearlover.learnenglish.ui.screens.edit_word_screen.EditWordFragment">
 
     <TextView
         android:id="@+id/tv_word"
         android:textAlignment="center"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
+        android:hint="@string/word"
+        android:inputType="text"
         android:id="@+id/et_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello" />
+        tools:text="Hello"
+        android:importantForAutofill="no" />
 
     <EditText
+        android:hint="@string/translate"
+        android:inputType="text"
         android:id="@+id/et_translate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello" />
+        tools:text="@string/word"
+        android:importantForAutofill="no" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_examples"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hello" />
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

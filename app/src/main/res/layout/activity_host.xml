@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.magere.learnenglish.ui.HostActivity">
+    tools:context="com.carebearlover.learnenglish.ui.HostActivity">
 
     <fragment
         android:id="@+id/nav_host_fragment"

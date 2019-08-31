@@ -6,12 +6,12 @@
     app:startDestination="@id/repeatFragment">
     <fragment
         android:id="@+id/repeatFragment"
-        android:name="com.magere.learnenglish.ui.screens.repeat_screen.RepeatFragment"
+        android:name="com.carebearlover.learnenglish.ui.screens.repeat_screen.RepeatFragment"
         android:label="repeat_fragment"
         tools:layout="@layout/repeat_fragment" />
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.magere.learnenglish.ui.screens.list_screen.ListFragment"
+        android:name="com.carebearlover.learnenglish.ui.screens.list_screen.ListFragment"
         android:label="list_fragment"
         tools:layout="@layout/list_fragment" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/addWordFragment"
-        android:name="com.magere.learnenglish.ui.screens.add_word_screen.AddWordFragment"
+        android:name="com.carebearlover.learnenglish.ui.screens.add_word_screen.AddWordFragment"
         android:label="fragment_add_word"
         tools:layout="@layout/fragment_add_word" >
         <action
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/editWord"
-        android:name="com.magere.learnenglish.ui.screens.edit_word_screen.EditWordFragment"
+        android:name="com.carebearlover.learnenglish.ui.screens.edit_word_screen.EditWordFragment"
         android:label="edit_word_fragment"
         tools:layout="@layout/edit_word_fragment" />
 </navigation>

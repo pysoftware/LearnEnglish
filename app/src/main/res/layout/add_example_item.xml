@@ -1,18 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/im_deleteExample"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/delete"
+            android:src="@drawable/ic_decline" />
+
+        <TextView
+            android:id="@+id/tv_numberOfExample"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            tools:ignore="RelativeOverlap"
+            tools:text="example 1" />
+    </RelativeLayout>
+
 
     <EditText
         android:id="@+id/et_engWord"
-        android:hint="@string/eng_word"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="@string/eng_word"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+
     <EditText
         android:id="@+id/et_rusWord"
-        android:hint="@string/rus_word"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="@string/rus_word"
+        android:importantForAutofill="no"
+        android:inputType="text" />
 
 </LinearLayout>

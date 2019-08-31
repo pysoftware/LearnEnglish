@@ -3,7 +3,7 @@
     <string name="decline">Отмена</string>
     <string name="accept">Принять</string>
     <string name="main_menu">Главное меню</string>
-    <string name="words">words</string>
+    <string name="word">Слово</string>
     <string name="settings">Настройки</string>
     <string name="repeating">Повторов: </string>
     <string name="expand">expand</string>
@@ -32,4 +32,13 @@
     <string name="remember">Помню</string>
     <string name="repeat">Повторить</string>
     <string name="not_remember">Не помню</string>
+    <string name="resetAllProgress">Сбросить весь прогресс</string>
+    <string name="deleteAllWords">Удалить всё</string>
+    <string name="Search">Поиск</string>
+    <string name="current_progress">Текущий прогресс</string>
+    <string name="delete">Delete</string>
+
+    <string name="nearest_repeat">Ближайшее повторение: %s</string>
+    <string name="necessary_to_repeat">Осталось повторить: %d</string>
+    <string name="example">Пример #%d</string>
 </resources>
