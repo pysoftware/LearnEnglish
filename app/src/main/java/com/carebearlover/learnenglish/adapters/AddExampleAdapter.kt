@@ -7,27 +7,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.carebearlover.learnenglish.R
-import com.carebearlover.learnenglish.data.entities.ExampleEntity
-import kotlinx.android.synthetic.main.add_example_item.view.*
+import com.carebearlover.learnenglish.data.entities.MyExampleEntity
+import kotlinx.android.synthetic.main.item_add_example.view.*
 
 open class AddExampleAdapter : RecyclerView.Adapter<AddExampleAdapter.ViewHolder>() {
 
     private val example = "Пример #"
-    private var mExamplesList = mutableListOf<ExampleEntity>()
+    private var mExamplesList = mutableListOf<MyExampleEntity>()
 
-    fun addData(exampleEntity: ExampleEntity) {
-        mExamplesList.add(mExamplesList.size, exampleEntity)
+    fun addData(myExampleEntity: MyExampleEntity) {
+        mExamplesList.add(mExamplesList.size, myExampleEntity)
         notifyItemInserted(mExamplesList.lastIndex)
     }
 
-    fun getExamples(): List<ExampleEntity> {
+    fun getExamples(): List<MyExampleEntity> {
         mExamplesList.removeAll{
             it.example.isNullOrBlank() && it.translateExample.isNullOrBlank()
         }
         return mExamplesList
     }
 
-    fun setData(wordsList: List<ExampleEntity>) {
+    fun setData(wordsList: List<MyExampleEntity>) {
         mExamplesList.clear()
         mExamplesList.addAll(wordsList)
 
@@ -44,16 +44,14 @@ open class AddExampleAdapter : RecyclerView.Adapter<AddExampleAdapter.ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
                 itemView = LayoutInflater.from(parent.context).inflate(
-                        R.layout.add_example_item,
+                        R.layout.item_add_example,
                         parent,
                         false
                 )
         )
     }
 
-    override fun getItemCount(): Int {
-        return mExamplesList.size
-    }
+    override fun getItemCount(): Int = mExamplesList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 

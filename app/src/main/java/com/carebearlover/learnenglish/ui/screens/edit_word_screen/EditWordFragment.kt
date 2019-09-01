@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.carebearlover.learnenglish.R
 import com.carebearlover.learnenglish.adapters.ExamplesAdapter
-import kotlinx.android.synthetic.main.edit_word_fragment.*
-import kotlinx.android.synthetic.main.edit_word_fragment.et_word
+import kotlinx.android.synthetic.main.fragment_edit_word.*
+import kotlinx.android.synthetic.main.fragment_edit_word.et_word
 
 class EditWordFragment : Fragment() {
 
@@ -30,7 +30,7 @@ class EditWordFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.edit_word_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_edit_word, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -26,11 +26,11 @@
     <string name="look">Просмотреть</string>
     <string name="doing_study">На изучении</string>
     <string name="done_study">Изучено</string>
-    <string name="list">Слова</string>
+    <string name="categories">Категории</string>
     <string name="repeating_date">Следующее повторение: </string>
 
     <string name="remember">Помню</string>
-    <string name="repeat">Повторить</string>
+    <string name="repeat">Повторение</string>
     <string name="not_remember">Не помню</string>
     <string name="resetAllProgress">Сбросить весь прогресс</string>
     <string name="deleteAllWords">Удалить всё</string>
@@ -40,5 +40,11 @@
 
     <string name="nearest_repeat">Ближайшее повторение: %s</string>
     <string name="necessary_to_repeat">Осталось повторить: %d</string>
-    <string name="example">Пример #%d</string>
+    <string name="myExample">Пример #%d</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="vacation">Сегодня у Вас выходной!</string>
+    <string name="ads">Показ рекламы помогает сделать обучение бесплатным</string>
+    <string name="continuee">Продолжить</string>
+    <string name="my_words">Мои слова</string>
 </resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="6dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#524F4F"
+            android:textSize="18sp"
+            tools:text="Word" />
+
+        <ImageView
+            android:id="@+id/im_expandableArrow"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="5dp"
+            android:contentDescription="@string/expand"
+            android:src="@drawable/ic_down_arrow" />
+
+        <TextView
+            android:id="@+id/tv_wordTranslate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_word"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:text="Слово" />
+
+        <TextView
+            android:id="@+id/tv_needRepeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_wordTranslate"
+            android:layout_marginTop="4dp"
+            android:text="@string/date_repeat"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_countRepeating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_wordTranslate"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@id/tv_needRepeat"
+            android:textSize="15sp"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/tv_repeatingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_countRepeating"
+            android:text="@string/repeating_date"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_dateRepeating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_countRepeating"
+            android:layout_toEndOf="@id/tv_repeatingDate"
+            android:textSize="15sp"
+            tools:text="24 августа" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

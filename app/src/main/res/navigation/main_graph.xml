@@ -3,17 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/repeatFragment">
+    app:startDestination="@id/mainMenuFragment">
     <fragment
         android:id="@+id/repeatFragment"
         android:name="com.carebearlover.learnenglish.ui.screens.repeat_screen.RepeatFragment"
         android:label="repeat_fragment"
-        tools:layout="@layout/repeat_fragment" />
+        tools:layout="@layout/fragment_repeat" >
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_repeatFragment_to_adFragment"
+            app:destination="@id/adFragment" />
+    </fragment>
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.carebearlover.learnenglish.ui.screens.list_screen.ListFragment"
+        android:name="com.carebearlover.learnenglish.ui.screens.words_list_screen.WordsFragment"
         android:label="list_fragment"
-        tools:layout="@layout/list_fragment" >
+        tools:layout="@layout/fragment_list" >
         <action
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -55,5 +63,79 @@
         android:id="@+id/editWord"
         android:name="com.carebearlover.learnenglish.ui.screens.edit_word_screen.EditWordFragment"
         android:label="edit_word_fragment"
-        tools:layout="@layout/edit_word_fragment" />
+        tools:layout="@layout/fragment_edit_word" />
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.carebearlover.learnenglish.ui.screens.main_menu_screen.MainMenuFragment"
+        android:label="main_menu_fragment"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_mainMenuFragment_to_repeatFragment"
+            app:destination="@id/repeatFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_mainMenuFragment_to_addWordFragment"
+            app:destination="@id/addWordFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_addWordFragment2"
+            app:destination="@id/addWordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adFragment"
+        android:name="com.carebearlover.learnenglish.ui.screens.ads_screen.AdsFragment"
+        android:label="fragment_ad"
+        tools:layout="@layout/fragment_ads" >
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_adFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.carebearlover.learnenglish.ui.screens.category_list_screen.CategoriesFragment"
+        android:label="categories_fragment"
+        tools:layout="@layout/fragment_categories" >
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_categoriesFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_categoriesFragment_to_addCategoryFragment"
+            app:destination="@id/addCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myWordsFragment"
+        android:name="com.carebearlover.learnenglish.ui.screens.my_words_screen.MyWordsFragment"
+        android:label="my_words_fragment"
+        tools:layout="@layout/fragment_my_words" >
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_myWordsFragment_to_addWordFragment"
+            app:destination="@id/addWordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCategoryFragment"
+        android:name="com.carebearlover.learnenglish.ui.screens.add_category_screen.AddCategoryFragment"
+        android:label="add_category_fragment"
+        tools:layout="@layout/fragment_add_category" />
 </navigation>

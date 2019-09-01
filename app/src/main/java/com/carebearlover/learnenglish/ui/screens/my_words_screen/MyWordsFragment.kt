@@ -1,51 +1,52 @@
-package com.carebearlover.learnenglish.ui.screens.list_screen
+package com.carebearlover.learnenglish.ui.screens.my_words_screen
 
 import android.app.AlertDialog
-import android.os.Bundle
-import android.view.*
-import android.widget.Toast
-import android.widget.Toolbar
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.carebearlover.learnenglish.R
-import com.carebearlover.learnenglish.adapters.ItemTouchListener
-import com.carebearlover.learnenglish.adapters.WordsAdapter
-import com.carebearlover.learnenglish.data.entities.WordsEntity
-import kotlinx.android.synthetic.main.list_fragment.*
+import com.carebearlover.learnenglish.adapters.MyWordsAdapter
+import kotlinx.android.synthetic.main.fragment_list.*
 
-class ListFragment : Fragment(), androidx.appcompat.widget.Toolbar.OnMenuItemClickListener {
+class MyWordsFragment : Fragment(),
+        androidx.appcompat.widget.Toolbar.OnMenuItemClickListener {
 
     private lateinit var navController: NavController
-    private lateinit var mAdapter: WordsAdapter
-    private lateinit var viewModel: ListViewModel
+    private lateinit var mAdapter: MyWordsAdapter
+    private lateinit var viewModel: MyWordsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.list_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_my_words, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         navController = Navigation.findNavController(view)
         initViewModel()
 
-        setupWordsAdapter()
+        initWordsAdapter()
 
         toolbar.setOnMenuItemClickListener(this)
 
-        fb_addData.setOnClickListener {
-            navController.navigate(R.id.action_listFragment_to_addWordFragment)
+        fb_add_word.setOnClickListener {
+            navController.navigate(R.id.action_myWordsFragment_to_addWordFragment)
         }
     }
 
-    private fun setupWordsAdapter() {
+    private fun initWordsAdapter() {
         registerForContextMenu(rv_words)
-        mAdapter = WordsAdapter(
+        mAdapter = MyWordsAdapter(
                 application = activity!!.application,
                 navController = navController,
                 listener = {
@@ -60,17 +61,9 @@ class ListFragment : Fragment(), androidx.appcompat.widget.Toolbar.OnMenuItemCli
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProviders.of(this).get(ListViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(MyWordsViewModel::class.java)
 
-//        viewModel.getCountStudiesWords().observe(this, Observer {
-//            btn_studiesButton.text = "На изучении: $it"
-//        })
-//
-//        viewModel.getCountStudiedWords().observe(this, Observer {
-//            btn_studiedButton.text = "Изучено: $it"
-//        })
-
-        viewModel.getAllStudiesWords().observe(this, Observer { list ->
+        viewModel.getAllStudiesWords().observe(viewLifecycleOwner, Observer { list ->
             mAdapter.setData(list.sortedBy {
                 it.group
             })
@@ -82,7 +75,7 @@ class ListFragment : Fragment(), androidx.appcompat.widget.Toolbar.OnMenuItemCli
             R.id.resetAllProgress -> showResetAllProgressAlert()
             R.id.deleteAllWords -> showDeleteAllWordsAlert()
         }
-        return false
+        return true
     }
 
     private fun showResetAllProgressAlert() {
@@ -98,6 +91,7 @@ class ListFragment : Fragment(), androidx.appcompat.widget.Toolbar.OnMenuItemCli
                     dialog.dismiss()
                 }.create().show()
     }
+
     private fun showDeleteAllWordsAlert() {
         AlertDialog.Builder(context)
                 .setCancelable(true)
@@ -111,4 +105,5 @@ class ListFragment : Fragment(), androidx.appcompat.widget.Toolbar.OnMenuItemCli
                     dialog.dismiss()
                 }.create().show()
     }
+
 }

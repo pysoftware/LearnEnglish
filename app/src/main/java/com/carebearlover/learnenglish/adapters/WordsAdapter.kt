@@ -12,13 +12,13 @@ import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.carebearlover.learnenglish.R
-import com.carebearlover.learnenglish.data.entities.WordsEntity
-import com.carebearlover.learnenglish.data.repositories.Repository
+import com.carebearlover.learnenglish.data.entities.db_tables.WordsEntity
+import com.carebearlover.learnenglish.data.repositories.MyRepository
 import com.carebearlover.learnenglish.extensions.format
 import com.carebearlover.learnenglish.extensions.today
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.word_item.*
-import kotlinx.android.synthetic.main.word_item.view.*
+import kotlinx.android.synthetic.main.item_word.*
+import kotlinx.android.synthetic.main.item_word.view.*
 
 class WordsAdapter(
         private val listener: (WordsEntity) -> Unit,
@@ -26,8 +26,7 @@ class WordsAdapter(
         private val navController: NavController
 ) : RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
 
-    var word: WordsEntity? = null
-    private val repository = Repository(application)
+    private val repository = MyRepository(application)
 
     private var mWordsList = mutableListOf<WordsEntity>()
     private var mWordsListFull= mutableListOf<WordsEntity>()
@@ -54,7 +53,7 @@ class WordsAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
                 itemView = LayoutInflater.from(parent.context).inflate(
-                        R.layout.word_item,
+                        R.layout.item_word,
                         parent,
                         false
                 )
@@ -96,11 +95,11 @@ class WordsAdapter(
                         )
                         true
                     }
-                    R.id.deleteWord -> {
-                        repository.deleteWord(mWordsList[position])
-                        notifyItemRemoved(position)
-                        true
-                    }
+//                    R.id.deleteWord -> {
+//                        repository.deleteWord(mWordsList[position])
+//                        notifyItemRemoved(position)
+//                        true
+//                    }
                     else -> false
                 }
             }
@@ -126,14 +125,13 @@ class WordsAdapter(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), LayoutContainer {
         override val containerView: View?
             get() = itemView
-        private var mModel : WordsEntity? = null
 
         fun bind(model: WordsEntity, listener: (WordsEntity) -> Unit) {
-            mModel = model
+
             tv_word.text = model.word
             tv_wordTranslate.text = model.translate
-            tv_dateRepeating.text = format(model.date!!)
-            when (model.group) {
+            tv_dateRepeating.text = format(model.date ?: 0)
+            when (model.groupp) {
                 1 -> tv_countRepeating.text = " 6"
                 2 -> tv_countRepeating.text = " 5"
                 3 -> tv_countRepeating.text = " 4"

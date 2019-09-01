@@ -63,7 +63,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_examplesB"
-                tools:listitem="@layout/example_item"
+                tools:listitem="@layout/item_example"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
