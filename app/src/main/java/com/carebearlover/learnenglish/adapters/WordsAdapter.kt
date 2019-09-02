@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.carebearlover.learnenglish.R
 import com.carebearlover.learnenglish.data.entities.db_tables.WordsEntity
 import com.carebearlover.learnenglish.data.repositories.MyRepository
+import com.carebearlover.learnenglish.data.repositories.Repository
 import com.carebearlover.learnenglish.extensions.format
 import com.carebearlover.learnenglish.extensions.today
 import kotlinx.android.extensions.LayoutContainer
@@ -26,7 +27,7 @@ class WordsAdapter(
         private val navController: NavController
 ) : RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
 
-    private val repository = MyRepository(application)
+    private val repository = Repository(application)
 
     private var mWordsList = mutableListOf<WordsEntity>()
     private var mWordsListFull= mutableListOf<WordsEntity>()
@@ -58,7 +59,6 @@ class WordsAdapter(
                         false
                 )
         )
-
     }
 
     override fun getItemCount(): Int {
@@ -95,11 +95,11 @@ class WordsAdapter(
                         )
                         true
                     }
-//                    R.id.deleteWord -> {
-//                        repository.deleteWord(mWordsList[position])
-//                        notifyItemRemoved(position)
-//                        true
-//                    }
+                    R.id.deleteWord -> {
+                        repository.deleteWord(mWordsList[position])
+                        notifyItemRemoved(position)
+                        true
+                    }
                     else -> false
                 }
             }

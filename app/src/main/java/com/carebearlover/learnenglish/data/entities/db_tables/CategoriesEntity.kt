@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class CategoriesEntity(
         @PrimaryKey(autoGenerate = true)
         val id: Int? = null,
-        val category: String
+        val category: String,
+        val checked: Int?
 )

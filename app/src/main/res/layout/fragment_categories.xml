@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:menu="@menu/word_list_menu"
-            app:title="@string/current_progress"
+            app:title="@string/categories"
             app:titleTextColor="@android:color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -28,17 +28,5 @@
         tools:listitem="@layout/item_category"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fb_add_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="15dp"
-        android:clickable="true"
-        android:focusable="true"
-        app:srcCompat="@android:drawable/ic_input_add" />
 
 </RelativeLayout>

@@ -146,7 +146,7 @@ class RepeatFragment : Fragment(), View.OnClickListener {
     }
 
     private fun finishRepeating() {
-        navController.navigate(R.id.action_repeatFragment_to_adFragment)
+        navController.popBackStack()
     }
 
     override fun onDestroy() {

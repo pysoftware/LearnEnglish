@@ -8,34 +8,34 @@
         android:id="@+id/repeatFragment"
         android:name="com.carebearlover.learnenglish.ui.screens.repeat_screen.RepeatFragment"
         android:label="repeat_fragment"
-        tools:layout="@layout/fragment_repeat" >
+        tools:layout="@layout/fragment_repeat">
         <action
+            android:id="@+id/action_repeatFragment_to_adFragment"
+            app:destination="@id/adFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            android:id="@+id/action_repeatFragment_to_adFragment"
-            app:destination="@id/adFragment" />
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"
         android:name="com.carebearlover.learnenglish.ui.screens.words_list_screen.WordsFragment"
         android:label="list_fragment"
-        tools:layout="@layout/fragment_list" >
+        tools:layout="@layout/fragment_list">
         <action
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             android:id="@+id/action_listFragment_to_addWordFragment"
-            app:destination="@id/addWordFragment" />
-        <action
+            app:destination="@id/addWordFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
             android:id="@+id/action_listFragment_to_editWord"
-            app:destination="@id/editWord" />
+            app:destination="@id/editWord"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="word"
             app:argType="string" />
@@ -50,88 +50,103 @@
         android:id="@+id/addWordFragment"
         android:name="com.carebearlover.learnenglish.ui.screens.add_word_screen.AddWordFragment"
         android:label="fragment_add_word"
-        tools:layout="@layout/fragment_add_word" >
+        tools:layout="@layout/fragment_add_word">
         <action
+            android:id="@+id/action_addWordFragment_to_listFragment"
+            app:destination="@id/listFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            android:id="@+id/action_addWordFragment_to_listFragment"
-            app:destination="@id/listFragment" />
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_addWordFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/editWord"
         android:name="com.carebearlover.learnenglish.ui.screens.edit_word_screen.EditWordFragment"
         android:label="edit_word_fragment"
-        tools:layout="@layout/fragment_edit_word" />
+        tools:layout="@layout/fragment_edit_word">
+        <action
+            android:id="@+id/action_editWord_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="com.carebearlover.learnenglish.ui.screens.main_menu_screen.MainMenuFragment"
         android:label="main_menu_fragment"
-        tools:layout="@layout/fragment_main_menu" >
+        tools:layout="@layout/fragment_main_menu">
         <action
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             android:id="@+id/action_mainMenuFragment_to_repeatFragment"
-            app:destination="@id/repeatFragment" />
-        <action
+            app:destination="@id/repeatFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
             android:id="@+id/action_mainMenuFragment_to_addWordFragment"
-            app:destination="@id/addWordFragment" />
+            app:destination="@id/addWordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_mainMenuFragment_to_addWordFragment2"
-            app:destination="@id/addWordFragment" />
+            app:destination="@id/addWordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/adFragment"
         android:name="com.carebearlover.learnenglish.ui.screens.ads_screen.AdsFragment"
         android:label="fragment_ad"
-        tools:layout="@layout/fragment_ads" >
+        tools:layout="@layout/fragment_ads">
         <action
+            android:id="@+id/action_adFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            android:id="@+id/action_adFragment_to_mainMenuFragment"
-            app:destination="@id/mainMenuFragment" />
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.carebearlover.learnenglish.ui.screens.category_list_screen.CategoriesFragment"
         android:label="categories_fragment"
-        tools:layout="@layout/fragment_categories" >
+        tools:layout="@layout/fragment_categories">
         <action
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             android:id="@+id/action_categoriesFragment_to_listFragment"
-            app:destination="@id/listFragment" />
-        <action
+            app:destination="@id/listFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
             android:id="@+id/action_categoriesFragment_to_addCategoryFragment"
-            app:destination="@id/addCategoryFragment" />
+            app:destination="@id/addCategoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/myWordsFragment"
         android:name="com.carebearlover.learnenglish.ui.screens.my_words_screen.MyWordsFragment"
         android:label="my_words_fragment"
-        tools:layout="@layout/fragment_my_words" >
+        tools:layout="@layout/fragment_my_words">
         <action
+            android:id="@+id/action_myWordsFragment_to_addWordFragment"
+            app:destination="@id/addWordFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            android:id="@+id/action_myWordsFragment_to_addWordFragment"
-            app:destination="@id/addWordFragment" />
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/addCategoryFragment"

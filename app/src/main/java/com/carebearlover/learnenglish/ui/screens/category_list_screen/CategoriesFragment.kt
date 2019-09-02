@@ -38,7 +38,10 @@ class CategoriesFragment : Fragment() {
 
     private fun initAdapter() {
         registerForContextMenu(rv_categories)
-        mCategoriesAdapter = CategoriesAdapter(navController = navController)
+        mCategoriesAdapter = CategoriesAdapter(
+                navController = navController,
+                application = activity!!.application
+        )
 
         with(rv_categories) {
             layoutManager = LinearLayoutManager(view?.context, RecyclerView.VERTICAL, false)

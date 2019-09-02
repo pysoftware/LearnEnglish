@@ -1,7 +1,8 @@
 package com.carebearlover.learnenglish.adapters
 
-import android.os.Bundle
-import android.util.Log
+import android.app.AlertDialog
+import android.app.Application
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +11,14 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.carebearlover.learnenglish.R
 import com.carebearlover.learnenglish.data.entities.db_tables.CategoriesEntity
+import com.carebearlover.learnenglish.data.repositories.Repository
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_category.*
-import kotlin.math.log
+import kotlinx.android.synthetic.main.item_category.view.*
 
 class CategoriesAdapter(
-        private val navController: NavController
+        private val navController: NavController,
+        private val application: Application
 ) : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
     private val mCategories = mutableListOf<CategoriesEntity>()
@@ -44,7 +47,12 @@ class CategoriesAdapter(
         holder.itemView.setOnClickListener {
             val bundle = bundleOf("category" to mCategories[position].category.trim().toLowerCase())
             navController.navigate(R.id.action_categoriesFragment_to_listFragment, bundle)
-            Log.d("bundle", bundle.getString("category"))
+        }
+
+        holder.itemView.cb_category.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                showAlertDialog(holder.itemView.context)
+            }
         }
     }
 
@@ -53,9 +61,22 @@ class CategoriesAdapter(
             get() = itemView
 
         fun bind(model: CategoriesEntity) {
+            cb_category.isChecked = (model.checked == 1)
             tv_category.text = model.category
 
         }
+    }
+    private fun showAlertDialog(context: Context) {
+        AlertDialog.Builder(context)
+                .setCancelable(true)
+                .setTitle("Сбросить весь прогресс?")
+                .setMessage("Прогресс изучения будет сброшен")
+                .setPositiveButton("Да") { _, _ ->
+
+                }
+                .setNegativeButton("Отмена") { dialog, _ ->
+                    dialog.dismiss()
+                }.create().show()
     }
 }
 //Look here - Послушайте.

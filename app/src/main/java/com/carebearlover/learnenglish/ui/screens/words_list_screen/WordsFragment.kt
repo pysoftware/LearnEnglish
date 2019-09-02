@@ -2,19 +2,24 @@ package com.carebearlover.learnenglish.ui.screens.words_list_screen
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.view.*
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.carebearlover.learnenglish.R
+import com.carebearlover.learnenglish.R.layout.fragment_list
 import com.carebearlover.learnenglish.adapters.WordsAdapter
-import com.carebearlover.learnenglish.data.entities.MyWordsEntity
 import kotlinx.android.synthetic.main.fragment_list.*
+import java.util.*
+
 
 class WordsFragment : Fragment(),
         androidx.appcompat.widget.Toolbar.OnMenuItemClickListener {
@@ -32,7 +37,7 @@ class WordsFragment : Fragment(),
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_list, container, false)
+        return inflater.inflate(fragment_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,6 +49,7 @@ class WordsFragment : Fragment(),
         initWordsAdapter()
 
         toolbar.setOnMenuItemClickListener(this)
+        toolbar.title = category!!.capitalize()
 
         fb_add_word.setOnClickListener {
             navController.navigate(R.id.action_listFragment_to_addWordFragment)
@@ -52,6 +58,7 @@ class WordsFragment : Fragment(),
 
     private fun initWordsAdapter() {
         registerForContextMenu(rv_words)
+        val lm = LinearLayoutManager(view?.context, RecyclerView.VERTICAL, false)
         mAdapter = WordsAdapter(
                 application = activity!!.application,
                 navController = navController,
@@ -59,9 +66,10 @@ class WordsFragment : Fragment(),
 
                 }
         )
-
+        val dividerItemDecoration = DividerItemDecoration(rv_words.context, lm.orientation)
+        rv_words.addItemDecoration(dividerItemDecoration)
         with(rv_words) {
-            layoutManager = LinearLayoutManager(view?.context, RecyclerView.VERTICAL, false)
+            layoutManager = lm
             adapter = mAdapter
         }
     }
@@ -74,12 +82,6 @@ class WordsFragment : Fragment(),
                 it.groupp
             })
         })
-//        viewModel.getAllStudiesWords().observe(viewLifecycleOwner, Observer { list ->
-//            words.addAll(list)
-//            mAdapter.setData(list.sortedBy {
-//                it.group
-//            })
-//        })
     }
 
     override fun onMenuItemClick(menuItem: MenuItem?): Boolean {
